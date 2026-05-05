@@ -6,7 +6,7 @@ export default function sendEmail(values) {
     process.env.service_name,
     process.env.temp_id,
     {
-       to_email: process.nextTick.EMAIL_USER,
+       to_email: process.env.EMAIL_USER,
     first_name: values.firstName,
       last_name: values.lastName,
       company: values.company,
