@@ -103,7 +103,9 @@ export default function GetInTouch() {
       resetForm();
       setSubmitted(true);
     } catch (err) {
-      setServerError(t('GetInTouch.error'));
+  setServerError(
+    err?.text || t('GetInTouch.error')
+  );
       console.error(err);
     } finally {
       setSubmitting(false);
@@ -231,7 +233,6 @@ export default function GetInTouch() {
                       <p className="invalid-msg mb-3">{serverError}</p>
                     )}
 
-                    {/* BUTTON */}
                     <button type="submit" className="btn-submit" disabled={isSubmitting}>
                       {isSubmitting
                         ? t('GetInTouch.form.sending')

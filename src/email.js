@@ -1,22 +1,17 @@
 import emailjs from "@emailjs/browser";
 
 export default function sendEmail(values) {
-  
-    try {  return emailjs.send(
-    process.env.service_name,
-    process.env.temp_id,
+  return emailjs.send(
+    process.env.REACT_APP_SERVICE_NAME,
+    process.env.REACT_APP_TEMPLATE_ID,
     {
-       to_email: process.env.EMAIL_USER,
-    first_name: values.firstName,
+      to_email: process.env.REACT_APP_EMAIL_USER,
+      first_name: values.firstName,
       last_name: values.lastName,
       company: values.company,
       industry: values.industry,
       message: values.message,
     },
-    process.env.PUBLIC_URL
-  );}
-  catch (error) {
-    console.log(error);
-    
-  }
+    process.env.REACT_APP_PUBLIC_KEY
+  );
 }
