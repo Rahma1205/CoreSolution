@@ -1,101 +1,81 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-
-const contacts = [
-  {
-    icon: "👤",
-    labelKey: "contact.items.person.label",
-    valueKey: "contact.items.person.value",
-  },
-  {
-    icon: "📧",
-    labelKey: "contact.items.email.label",
-    type: "email",
-    value: "Morsy.ahmedd2@gmail.com",
-  },
-  {
-    icon: "📍",
-    labelKey: "contact.items.location.label",
-    valueKey: "contact.items.location.value",
-  },
-  {
-    icon: "🌐",
-    labelKey: "contact.items.website.label",
-    type: "website",
-    value: "https://www.coresolutions.co",
-  },
-];
 
 export default function Contact() {
   const { t } = useTranslation();
 
-  const renderValue = (c) => {
-    if (c.type === "email") {
-      return (
-        <a href={`mailto:${c.value}`}>
-          {c.value}
-        </a>
-      );
-    }
+  const cards = [
+    {
+      icon: "👤",
+      label: t("contact.cards.contact.label"),
+      value: (
+        <>
+          {t("contact.cards.contact.name")}
+          <br />
+          {t("contact.cards.contact.role")}
+        </>
+      ),
+    },
+    {
+      icon: "📧",
+      label: t("contact.cards.email.label"),
+      value: t("contact.cards.email.value"),
+    },
+    {
+      icon: "📍",
+      label: t("contact.cards.location.label"),
+      value: t("contact.cards.location.value"),
+    },
+    {
+      icon: "🌐",
+      label: t("contact.cards.website.label"),
+      value: t("contact.cards.website.value"),
+    },
+  ];
 
-    if (c.type === "website") {
-      return (
-        <a href={c.value} target="_blank" rel="noreferrer">
-          {t("contact.items.website.value")}
-        </a>
-      );
-    }
+  // ✨ Scroll Animation
+  useEffect(() => {
+    const elements = document.querySelectorAll(".reveal, .stagger-children");
 
-    return t(c.valueKey);
-  };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section className="cs-cta-section" id="contact">
-      <div className="container">
-        <div className="row align-items-center gy-5">
+    <div className="talk-wrapper reveal">
+      <p className="talk-label">{t("contact.label")}</p>
 
-          <div className="col-lg-6">
-            <span className="cs-section-label">
-              {t("contact.label")}
-            </span>
+      <h1 className="talk-heading">
+        {t("contact.heading.line1")}
+        <br />
+        <span className="teal">{t("contact.heading.highlight")}</span>
+      </h1>
 
-            <h2>{t("contact.heading")}</h2>
+      <div className="talk-desc">{t("contact.description")}</div>
 
-            <p>{t("contact.description")}</p>
-
-            <a
-              href="mailto:Morsy.ahmedd2@gmail.com"
-              className="cs-hero-cta"
-              style={{ display: "inline-block" }}
-            >
-              {t("contact.cta")}
-            </a>
-
-            <blockquote className="cs-quote">
-              {t("contact.quote")}
-            </blockquote>
+      <div className="cards-row stagger-children">
+        {cards.map((card, index) => (
+          <div key={index} className="contact-card hover-lift">
+            <div className="c-icon">{card.icon}</div>
+            <div className="c-label">{card.label}</div>
+            <div className="c-value">{card.value}</div>
           </div>
-
-          <div className="col-lg-5 offset-lg-1">
-            <div className="cs-contact-box">
-              {contacts.map((c, i) => (
-                <div className="cs-contact-row" key={i}>
-                  <div className="cs-contact-icon">{c.icon}</div>
-                  <div>
-                    <div className="label">
-                      {t(c.labelKey)}
-                    </div>
-                    <div className="value">
-                      {renderValue(c)}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </div>
+        ))}
       </div>
-    </section>
+
+      <p className="talk-quote">{t("contact.quote")}</p>
+    </div>
   );
 }

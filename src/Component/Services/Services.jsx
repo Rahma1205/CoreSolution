@@ -1,80 +1,86 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-
-const services = [
-  {
-    icon: "📞",
-    titleKey: "services.items.voice.title",
-    bodyKey: "services.items.voice.body",
-    tagKey: "services.items.voice.tag",
-  },
-  {
-    icon: "💬",
-    titleKey: "services.items.chat.title",
-    bodyKey: "services.items.chat.body",
-    tagKey: "services.items.chat.tag",
-  },
-  {
-    icon: "🔄",
-    titleKey: "services.items.overflow.title",
-    bodyKey: "services.items.overflow.body",
-    tagKey: "services.items.overflow.tag",
-  },
-  {
-    icon: "🌐",
-    titleKey: "services.items.multilingual.title",
-    bodyKey: "services.items.multilingual.body",
-    tagKey: "services.items.multilingual.tag",
-  },
-  {
-    icon: "📋",
-    titleKey: "services.items.queue.title",
-    bodyKey: "services.items.queue.body",
-    tagKey: "services.items.queue.tag",
-  },
-  {
-    icon: "📊",
-    titleKey: "services.items.reporting.title",
-    bodyKey: "services.items.reporting.body",
-    tagKey: "services.items.reporting.tag",
-  },
-];
 
 export default function Services() {
   const { t } = useTranslation();
 
+  const services = [
+    {
+      icon: "📞",
+      title: t("services.items.0.title"),
+      desc: t("services.items.0.desc"),
+      badge: t("services.items.0.badge"),
+    },
+    {
+      icon: "💬",
+      title: t("services.items.1.title"),
+      desc: t("services.items.1.desc"),
+      badge: t("services.items.1.badge"),
+    },
+    {
+      icon: "🔄",
+      title: t("services.items.2.title"),
+      desc: t("services.items.2.desc"),
+      badge: t("services.items.2.badge"),
+    },
+    {
+      icon: "🌐",
+      title: t("services.items.3.title"),
+      desc: t("services.items.3.desc"),
+      badge: t("services.items.3.badge"),
+    },
+    {
+      icon: "📋",
+      title: t("services.items.4.title"),
+      desc: t("services.items.4.desc"),
+      badge: t("services.items.4.badge"),
+    },
+    {
+      icon: "📊",
+      title: t("services.items.5.title"),
+      desc: t("services.items.5.desc"),
+      badge: t("services.items.5.badge"),
+    },
+  ];
+
+  // ✨ Scroll animation
+  useEffect(() => {
+    const elements = document.querySelectorAll(".reveal, .stagger-children");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="cs-section cs-section-alt" id="services">
-      <div className="container">
+    <div className="services-wrapper reveal">
+      <p className="services-label">{t("services.label")}</p>
 
-        <div className="row justify-content-center text-center mb-5">
-          <div className="col-lg-7">
-            <span className="cs-section-label">
-              {t("services.label")}
-            </span>
+      <h1 className="services-heading">
+        {t("services.heading")}
+      </h1>
 
-            <h2>{t("services.heading")}</h2>
-
-            <div className="cs-divider mx-auto" />
+      <div className="services-grid stagger-children">
+        {services.map((service, index) => (
+          <div key={index} className="service-card hover-lift">
+            <div className="card-icon">{service.icon}</div>
+            <div className="card-title">{service.title}</div>
+            <p className="card-desc">{service.desc}</p>
+            <span className="card-badge">{service.badge}</span>
           </div>
-        </div>
-
-        <div className="row g-4">
-          {services.map((s) => (
-            <div className="col-sm-6 col-lg-4" key={s.titleKey}>
-              <div className="cs-service-card">
-                <span className="cs-service-icon">{s.icon}</span>
-                <h5>{t(s.titleKey)}</h5>
-                <p>{t(s.bodyKey)}</p>
-                <span className="cs-service-tag">
-                  {t(s.tagKey)}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-
+        ))}
       </div>
-    </section>
+    </div>
   );
 }

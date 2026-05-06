@@ -1,59 +1,72 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-
-const challenges = [
-  {
-    icon: "💸",
-    titleKey: "challenge.items.cost.title",
-    bodyKey: "challenge.items.cost.body",
-  },
-  {
-    icon: "📈",
-    titleKey: "challenge.items.scale.title",
-    bodyKey: "challenge.items.scale.body",
-  },
-  {
-    icon: "🌍",
-    titleKey: "challenge.items.language.title",
-    bodyKey: "challenge.items.language.body",
-  },
-  {
-    icon: "⏰",
-    titleKey: "challenge.items.timezone.title",
-    bodyKey: "challenge.items.timezone.body",
-  },
-];
 
 export default function Challenge() {
   const { t } = useTranslation();
 
+  const challenges = [
+    {
+      icon: "💸",
+      title: t("challenge.items.0.title"),
+      desc: t("challenge.items.0.desc"),
+    },
+    {
+      icon: "📈",
+      title: t("challenge.items.1.title"),
+      desc: t("challenge.items.1.desc"),
+    },
+    {
+      icon: "🌍",
+      title: t("challenge.items.2.title"),
+      desc: t("challenge.items.2.desc"),
+    },
+    {
+      icon: "⏰",
+      title: t("challenge.items.3.title"),
+      desc: t("challenge.items.3.desc"),
+    },
+  ];
+
+  // ✨ Scroll animation
+  useEffect(() => {
+    const elements = document.querySelectorAll(".reveal, .stagger-children");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="cs-section cs-section-alt" id="challenge">
-      <div className="container">
+    <div className="chal-wrapper reveal">
+      <p className="chal-label">{t("challenge.label")}</p>
 
-        <div className="row justify-content-center text-center mb-5">
-          <div className="col-lg-7">
-            <span className="cs-section-label">
-              {t("challenge.badge")}
-            </span>
-            <h2>{t("challenge.heading")}</h2>
-            <div className="cs-divider mx-auto" />
-          </div>
-        </div>
+      <h1 className="chal-heading">
+        {t("challenge.heading")}
+      </h1>
 
-        <div className="row g-4">
-          {challenges.map((c) => (
-            <div className="col-sm-6 col-lg-3" key={c.titleKey}>
-              <div className="cs-challenge-card">
-                <span className="cs-challenge-icon">{c.icon}</span>
-                <h5>{t(c.titleKey)}</h5>
-                <p>{t(c.bodyKey)}</p>
-              </div>
+      <div className="chal-grid stagger-children">
+        {challenges.map((item, index) => (
+          <div key={index} className="chal-card hover-lift">
+            <div className="card-top">
+              <span className="card-icon">{item.icon}</span>
+              <span className="card-title">{item.title}</span>
             </div>
-          ))}
-        </div>
 
+            <p className="card-desc">{item.desc}</p>
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }

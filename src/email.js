@@ -7,10 +7,11 @@ export default function sendEmail(values) {
     // process.env.REACT_APP_TEMPLATE_ID,
     "template_uwzfdi8",
     {
-      to_email:"morsy.ahmedd2@gmail.com",
+      to_email:"Morsy.ahmedd2@gmail.com",
       first_name: values.firstName,
       last_name: values.lastName,
       company: values.company,
+      Phone_number: values.phone,
       industry: values.industry,
       message: values.message,
     },

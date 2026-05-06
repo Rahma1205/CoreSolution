@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, createHashRouter, RouterProvider } from "react-router-dom";
 // import { I18nextProvider } from "react-i18next";
 
 import i18n from "./il8n";
@@ -24,7 +24,7 @@ function App() {
 
  
 
-  const routers = createHashRouter([{
+  const routers = createBrowserRouter([{
     path: '', element: <Layout />, children: [
       { index: true, element: <Home  /> },
 { path: '/challenge', element: <Challenge/> },

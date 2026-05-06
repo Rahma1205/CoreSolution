@@ -41,12 +41,12 @@ document.documentElement.dir = newLang === "ar" ? "rtl" : "ltr";  };
 
             <li className="nav-item">
                 <Link className="nav-link active text-dark success-hover" to="/challenge">
-                  {t('challenge.badge')}
+                  {t('challenge.label')}
                 </Link>
               </li>
              <li className="nav-item">
                 <Link className="nav-link text-muted success-hover" to="/WhoWeAre">
-                  {t('about.label')}
+                  {t('who.label')}
                 </Link>
               </li>
               <li className="nav-item">
