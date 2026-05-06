@@ -24,7 +24,7 @@ function App() {
 
  
 
-  const routers = createBrowserRouter([{
+  const routers = createHashRouter([{
     path: '', element: <Layout />, children: [
       { index: true, element: <Home  /> },
 { path: '/challenge', element: <Challenge/> },

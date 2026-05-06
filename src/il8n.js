@@ -15,6 +15,7 @@ i18n
           "DaysPilot": "30 Days Pilot",
           Contact: "Contact",
           GetAfreeConsultation: "Get a Free Consultation",
+    "company": "Core Solutions",
 
           hero: {
             title: "Scale Your Customer Support Without Scaling Your Costs",
@@ -378,6 +379,7 @@ i18n
           "DaysPilot": "تجربة 30 يوم",
           Contact: "تواصل معنا",
           GetAfreeConsultation: "احصل على استشارة مجانية",
+    "company": "Core Solutions",
 
           hero: {
             title: "وسّع خدمة دعم العملاء من غير ما تزود التكاليف",
