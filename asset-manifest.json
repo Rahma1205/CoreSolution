@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/your-repo-name/static/css/main.294a49eb.css",
-    "main.js": "/your-repo-name/static/js/main.f6e8d525.js",
-    "static/js/453.9bc47b00.chunk.js": "/your-repo-name/static/js/453.9bc47b00.chunk.js",
-    "static/media/fa-solid-900.woff2": "/your-repo-name/static/media/fa-solid-900.ce9a3fa740bd60b4ac3b.woff2",
-    "static/media/fa-brands-400.woff2": "/your-repo-name/static/media/fa-brands-400.f276979f97f1cf375d23.woff2",
-    "static/media/notfound.jpg": "/your-repo-name/static/media/notfound.dcd31ba585e2c61091ee.jpg",
-    "static/media/fa-regular-400.woff2": "/your-repo-name/static/media/fa-regular-400.cfbad32c79d9dda6af4a.woff2",
-    "static/media/fa-v4compatibility.woff2": "/your-repo-name/static/media/fa-v4compatibility.296da06936a3373940c8.woff2",
-    "index.html": "/your-repo-name/index.html",
-    "main.294a49eb.css.map": "/your-repo-name/static/css/main.294a49eb.css.map",
-    "main.f6e8d525.js.map": "/your-repo-name/static/js/main.f6e8d525.js.map",
-    "453.9bc47b00.chunk.js.map": "/your-repo-name/static/js/453.9bc47b00.chunk.js.map"
+    "main.css": "/CoreSolution/static/css/main.19c7d97b.css",
+    "main.js": "/CoreSolution/static/js/main.d0209cc8.js",
+    "static/js/453.9bc47b00.chunk.js": "/CoreSolution/static/js/453.9bc47b00.chunk.js",
+    "static/media/fa-solid-900.woff2": "/CoreSolution/static/media/fa-solid-900.ce9a3fa740bd60b4ac3b.woff2",
+    "static/media/fa-brands-400.woff2": "/CoreSolution/static/media/fa-brands-400.f276979f97f1cf375d23.woff2",
+    "static/media/notfound.jpg": "/CoreSolution/static/media/notfound.dcd31ba585e2c61091ee.jpg",
+    "static/media/fa-regular-400.woff2": "/CoreSolution/static/media/fa-regular-400.cfbad32c79d9dda6af4a.woff2",
+    "static/media/fa-v4compatibility.woff2": "/CoreSolution/static/media/fa-v4compatibility.296da06936a3373940c8.woff2",
+    "index.html": "/CoreSolution/index.html",
+    "main.19c7d97b.css.map": "/CoreSolution/static/css/main.19c7d97b.css.map",
+    "main.d0209cc8.js.map": "/CoreSolution/static/js/main.d0209cc8.js.map",
+    "453.9bc47b00.chunk.js.map": "/CoreSolution/static/js/453.9bc47b00.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.294a49eb.css",
-    "static/js/main.f6e8d525.js"
+    "static/css/main.19c7d97b.css",
+    "static/js/main.d0209cc8.js"
   ]
 }
