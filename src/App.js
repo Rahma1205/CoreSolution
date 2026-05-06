@@ -49,7 +49,7 @@ function App() {
 
     
     {/* <I18nextProvider i18n={il8n}> */}
-      <RouterProvider router={routers} />
+      <RouterProvider router={routers} basename="/CoreSolution" />
 
  {/* </I18nextProvider> */}
 
